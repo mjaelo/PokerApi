@@ -12,3 +12,35 @@ eg $input-color: red;
 @import '~bootswatch/dist/superhero/bootswatch';
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
+
+body {
+  background-color: #006600;
+}
+
+.alert a:hover, .alert .alert-link:hover{
+  color: $green;
+  text-decoration: underline;
+}
+
+.card {
+  background-color: #1e232752;
+}
+
+.alert-warning {
+  background-color: $dark;
+}
+
+.form-control:focus {
+  border-color: $green;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $green;
+  border-color: #006600;
+}
+
+.btn-primary:hover {
+    background-color: #006600;
+    border-color: $green;
+  }
