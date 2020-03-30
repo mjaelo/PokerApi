@@ -16,8 +16,13 @@ Navbar
   width: 1.75em;
 }
 
+.bar {
+  background-color: $green !important;
+}
+
 .navbar {
   padding: 0.2rem 1rem;
+
   .dropdown-item.active,
   .dropdown-item.active:focus,
   .dropdown-item.active:hover {
@@ -49,6 +54,6 @@ Logo styles
   width: 45px;
   display: inline-block;
   vertical-align: middle;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background: url('../../../content/images/logo-card.png') no-repeat center center;
   background-size: contain;
 }
