@@ -1,8 +1,8 @@
 
-package poker.cards.card;
+package org.java.poker.lib.cards.card;
 
 public class Rank {
-    
+
     public static final int ACE = 14;
     public static final int KING = 13;
     public static final int QUEEN = 12;
@@ -16,8 +16,8 @@ public class Rank {
     public static final int FOUR = 4;
     public static final int THREE = 3;
     public static final int TWO = 2;
-    
-    
+
+
     public static final int RANGE_RANK_MIN = 2;
     public static final int RANGE_RANK_MAX = 14;
 }

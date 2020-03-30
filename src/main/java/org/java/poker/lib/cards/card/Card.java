@@ -1,5 +1,5 @@
 
-package poker.cards.card;
+package org.java.poker.lib.cards.card;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,14 +7,14 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Card implements Comparable<Card>{
-    
+
     private final int color;
     private final int rank;
-        
+
     @Override
     public String toString(){
         String rankStr, colorStr;
-        
+
         switch (this.rank) {
             case Rank.ACE:
                 rankStr = "A";
@@ -32,7 +32,7 @@ public class Card implements Comparable<Card>{
                 rankStr = String.valueOf(this.rank);
                 break;
         }
-        
+
         switch (this.color) {
             case Color.HEART:
                 colorStr = "♡";
@@ -50,10 +50,10 @@ public class Card implements Comparable<Card>{
                 colorStr = "Błąd";
                 break;
         }
-        
+
         return rankStr + colorStr;
     }
-    
+
     @Override
     public int compareTo(Card o) {
         return getRank() < o.getRank()? 1: -1;

@@ -1,17 +1,17 @@
 
-package poker.cards.hand;
+package org.java.poker.lib.cards.hand;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import poker.cards.card.Card;
+import org.java.poker.lib.cards.card.Card;
 
 public class HandCombinantions extends Combinations {
-    
+
     public static ArrayList<Card[]> getHandCombinations(Hand hand){
         ArrayList<Card[]> ret = new ArrayList<>();
-        
+
         Card[] allCards = hand.getAllCards();
-                
+
         for(int[] i : combinations){
             Card[] combination = new Card[5];
             for(int j=0; j<5; j++){
@@ -20,8 +20,8 @@ public class HandCombinantions extends Combinations {
             Arrays.sort(combination);
             ret.add(combination);
         }
-        
+
         return ret;
     }
-    
+
 }
