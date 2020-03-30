@@ -1,18 +1,29 @@
-
 package org.java.poker.lib.cards.card;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Data
-@AllArgsConstructor
-public class Card implements Comparable<Card>{
+public class Card implements Comparable<Card> {
 
     private final int color;
     private final int rank;
 
+    public Card(int color, int rank) {
+        this.color = color;
+        this.rank = rank;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         String rankStr, colorStr;
 
         switch (this.rank) {

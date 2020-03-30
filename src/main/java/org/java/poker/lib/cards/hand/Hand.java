@@ -10,6 +10,26 @@ public class Hand {
     private Card[] handCards = new Card[2];
     private Card[] tableCards = new Card[5];
 
+    public Hand(Card[] handCards, Card[] tableCards) {
+        this.handCards = handCards;
+        this.tableCards = tableCards;
+    }
+
+    public Card[] getHandCards() {
+        return handCards;
+    }
+
+    public void setHandCards(Card[] handCards) {
+        this.handCards = handCards;
+    }
+
+    public Card[] getTableCards() {
+        return tableCards;
+    }
+
+    public void setTableCards(Card[] tableCards) {
+        this.tableCards = tableCards;
+    }
 
     public Card[] getAllCards(){
         Card[] allCards = new Card[7];
