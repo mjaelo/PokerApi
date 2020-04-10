@@ -6,6 +6,7 @@ import org.java.poker.domain.User;
 import org.java.poker.repository.UserRepository;
 import org.java.poker.security.SecurityUtils;
 import org.java.poker.service.MailService;
+import org.java.poker.service.PlayerService;
 import org.java.poker.service.UserService;
 import org.java.poker.service.dto.PasswordChangeDTO;
 import org.java.poker.service.dto.UserDTO;
@@ -48,12 +49,15 @@ public class AccountResource {
 
     private final PersistentTokenRepository persistentTokenRepository;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService, PersistentTokenRepository persistentTokenRepository) {
+    private final PlayerService playerService;
+
+    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService, PersistentTokenRepository persistentTokenRepository, PlayerService playerService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
         this.persistentTokenRepository = persistentTokenRepository;
+        this.playerService = playerService;
     }
 
     /**
@@ -71,6 +75,7 @@ public class AccountResource {
             throw new InvalidPasswordException();
         }
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        playerService.addPlayer(user);
         mailService.sendActivationEmail(user);
     }
 
