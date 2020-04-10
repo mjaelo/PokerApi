@@ -1,33 +1,39 @@
 package org.java.poker.domain;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * A Player.
+ */
 @Entity
-public class Player {
+@Table(name = "player")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+public class Player implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    private String nick;
+    @Column(name = "nickname")
+    private String nickname;
 
+    @Column(name = "cash")
     private Long cash;
 
-    private Long card_1;
-    private Long card_2;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(unique = true)
     private User user;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
     }
@@ -36,35 +42,68 @@ public class Player {
         this.id = id;
     }
 
-    public String getNick() {
-        return nick;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public Player nickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public Long getCash() {
         return cash;
     }
 
+    public Player cash(Long cash) {
+        this.cash = cash;
+        return this;
+    }
+
     public void setCash(Long cash) {
         this.cash = cash;
     }
 
-    public Long getCard_1() {
-        return card_1;
+    public User getUser() {
+        return user;
     }
 
-    public void setCard_1(Long card_1) {
-        this.card_1 = card_1;
+    public Player user(User user) {
+        this.user = user;
+        return this;
     }
 
-    public Long getCard_2() {
-        return card_2;
+    public void setUser(User user) {
+        this.user = user;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Player)) {
+            return false;
+        }
+        return id != null && id.equals(((Player) o).id);
     }
 
-    public void setCard_2(Long card_2) {
-        this.card_2 = card_2;
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+            "id=" + getId() +
+            ", nickname='" + getNickname() + "'" +
+            ", cash=" + getCash() +
+            "}";
     }
 }
