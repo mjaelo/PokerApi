@@ -15,11 +15,17 @@ h2,
 h3,
 h4,
 h5,
-h6 {    margin: 8px 0;    }
+h6 {
+  margin: 8px 0;
+}
 
-p {        margin: 0;    }
+p {
+  margin: 0;
+}
 
-.spacer {        flex: 1;    }
+.spacer {
+  flex: 1;
+}
 
 .content {
   display: flex;
@@ -131,11 +137,10 @@ a:hover {
 }
 
 
-
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
 
-  .card-container > *:not(.circle-link) ,
+  .card-container > *:not(.circle-link),
   .terminal {
     width: 100%;
   }
@@ -153,10 +158,10 @@ a:hover {
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (-moz-min-device-pixel-ratio: 2),
-  only screen and (-o-min-device-pixel-ratio: 2/1),
-  only screen and (min-resolution: 192dpi),
-  only screen and (min-resolution: 2dppx) {
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) {
   .hipster {
     background: url('../../content/images/jhipster_family_member_1.svg') no-repeat center top;
     background-size: contain;

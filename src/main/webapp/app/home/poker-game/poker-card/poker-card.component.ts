@@ -6,16 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./poker-card.component.scss']
 })
 export class PokerCardComponent implements OnInit {
+
   nazwa: string;
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  fun(nazwa2: string): void {
-    this.nazwa = nazwa2;
+  ngOnInit(): void {
+    this.fun();
   }
-  fun2(): string {
-    return 'green_back.png';
+
+  fun(): void {
+    this.nazwa = '../../../../content/images/cards-pictures/2H.png';
   }
 }
