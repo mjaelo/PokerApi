@@ -28,6 +28,18 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
+    public void addPlayer(User user){
+        Player player = new Player();
+        player.setUser(user);
+        player.setCash(Long.valueOf(1000));
+        player.setNickname(user.getLogin());
+        playerRepository.save(player);
+    }
+
+    public Optional<Player> findByNickname(String nickname){
+        return this.playerRepository.findByNickname(nickname);
+    }
+
     /**
      * Save a player.
      *
@@ -37,14 +49,6 @@ public class PlayerService {
     public Player save(Player player) {
         log.debug("Request to save Player : {}", player);
         return playerRepository.save(player);
-    }
-
-    public void addPlayer(User user){
-        Player player = new Player();
-        player.setUser(user);
-        player.setCash(Long.valueOf(1000));
-        player.setNickname(user.getLogin());
-        playerRepository.save(player);
     }
 
     /**
@@ -79,9 +83,5 @@ public class PlayerService {
     public void delete(Long id) {
         log.debug("Request to delete Player : {}", id);
         playerRepository.deleteById(id);
-    }
-
-    public Optional<Player> findByUserId(Long userId) {
-        return playerRepository.findByUserId(userId);
     }
 }

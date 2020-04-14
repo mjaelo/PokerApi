@@ -35,4 +35,8 @@ export class PlayerService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
+  findByNickname(nickname: string): Observable<EntityResponseType> {
+    return this.http.get<IPlayer>(`${this.resourceUrl}/nickname/${nickname}`, { observe: 'response' });
+  }
 }

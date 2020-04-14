@@ -97,6 +97,13 @@ public class PlayerResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/players/nickname/{nickname}")
+    public ResponseEntity<Player> findPlayerByNickname(@PathVariable String nickname){
+        log.debug("REST request to get Player : {}", nickname);
+        Optional<Player> player = playerService.findByNickname(nickname);
+        return ResponseUtil.wrapOrNotFound(player);
+    }
+
     /**
      * {@code GET  /players/:id} : get the "id" player.
      *
@@ -121,12 +128,5 @@ public class PlayerResource {
         log.debug("REST request to delete Player : {}", id);
         playerService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
-    }
-
-    @GetMapping("players-by-uid/{userId}")
-    public ResponseEntity<Player> getPlayerByUserId(@PathVariable Long userId){
-        log.debug("REST request to get Player : {}", userId);
-        Optional<Player> player = playerService.findByUserId(userId);
-        return ResponseUtil.wrapOrNotFound(player);
     }
 }
