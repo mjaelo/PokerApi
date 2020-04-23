@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "player2",
+            "otherEntityName": "player",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": false,
+            "otherEntityRelationshipName": "game"
+        },
+        {
+            "relationshipName": "player1",
+            "otherEntityName": "player",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": false,
+            "otherEntityRelationshipName": "game"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "card1",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "card2",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "card3",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "card4",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "card5",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20200420154000",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "game",
+    "databaseType": "sql",
+    "readOnly": false,
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

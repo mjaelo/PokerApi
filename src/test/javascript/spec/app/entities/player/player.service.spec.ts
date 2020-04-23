@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(PlayerService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Player(0, 'AAAAAAA', 0);
+      elemDefault = new Player(0, 'AAAAAAA', 0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -55,7 +55,9 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nickname: 'BBBBBB',
-            cash: 1
+            cash: 1,
+            card1: 1,
+            card2: 1
           },
           elemDefault
         );
@@ -73,7 +75,9 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nickname: 'BBBBBB',
-            cash: 1
+            cash: 1,
+            card1: 1,
+            card2: 1
           },
           elemDefault
         );

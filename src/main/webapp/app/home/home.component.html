@@ -4,8 +4,8 @@
     <!--login -->
     <div [ngSwitch]="isAuthenticated()">
         <div *ngSwitchCase="true">
-            <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
-                  [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}"/</span>
+<!--            <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"-->
+<!--                  [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}"/</span>-->
             <jhi-poker-game *ngIf="account" [login]=account.login></jhi-poker-game>
 
             <!-- Opponents-->

@@ -45,6 +45,8 @@ public class CacheConfiguration {
             createCache(cm, org.java.poker.domain.PersistentToken.class.getName());
             createCache(cm, org.java.poker.domain.User.class.getName() + ".persistentTokens");
             createCache(cm, org.java.poker.domain.Player.class.getName());
+            createCache(cm, org.java.poker.domain.Game.class.getName());
+            createCache(cm, org.java.poker.domain.DealWinner.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

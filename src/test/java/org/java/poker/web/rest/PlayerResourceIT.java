@@ -38,6 +38,12 @@ public class PlayerResourceIT {
     private static final Long DEFAULT_CASH = 1L;
     private static final Long UPDATED_CASH = 2L;
 
+    private static final Long DEFAULT_CARD_1 = 1L;
+    private static final Long UPDATED_CARD_1 = 2L;
+
+    private static final Long DEFAULT_CARD_2 = 1L;
+    private static final Long UPDATED_CARD_2 = 2L;
+
     @Autowired
     private PlayerRepository playerRepository;
 
@@ -61,7 +67,9 @@ public class PlayerResourceIT {
     public static Player createEntity(EntityManager em) {
         Player player = new Player()
             .nickname(DEFAULT_NICKNAME)
-            .cash(DEFAULT_CASH);
+            .cash(DEFAULT_CASH)
+            .card1(DEFAULT_CARD_1)
+            .card2(DEFAULT_CARD_2);
         return player;
     }
     /**
@@ -73,7 +81,9 @@ public class PlayerResourceIT {
     public static Player createUpdatedEntity(EntityManager em) {
         Player player = new Player()
             .nickname(UPDATED_NICKNAME)
-            .cash(UPDATED_CASH);
+            .cash(UPDATED_CASH)
+            .card1(UPDATED_CARD_1)
+            .card2(UPDATED_CARD_2);
         return player;
     }
 
@@ -99,6 +109,8 @@ public class PlayerResourceIT {
         Player testPlayer = playerList.get(playerList.size() - 1);
         assertThat(testPlayer.getNickname()).isEqualTo(DEFAULT_NICKNAME);
         assertThat(testPlayer.getCash()).isEqualTo(DEFAULT_CASH);
+        assertThat(testPlayer.getCard1()).isEqualTo(DEFAULT_CARD_1);
+        assertThat(testPlayer.getCard2()).isEqualTo(DEFAULT_CARD_2);
     }
 
     @Test
@@ -133,7 +145,9 @@ public class PlayerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(player.getId().intValue())))
             .andExpect(jsonPath("$.[*].nickname").value(hasItem(DEFAULT_NICKNAME)))
-            .andExpect(jsonPath("$.[*].cash").value(hasItem(DEFAULT_CASH.intValue())));
+            .andExpect(jsonPath("$.[*].cash").value(hasItem(DEFAULT_CASH.intValue())))
+            .andExpect(jsonPath("$.[*].card1").value(hasItem(DEFAULT_CARD_1.intValue())))
+            .andExpect(jsonPath("$.[*].card2").value(hasItem(DEFAULT_CARD_2.intValue())));
     }
     
     @Test
@@ -148,7 +162,9 @@ public class PlayerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(player.getId().intValue()))
             .andExpect(jsonPath("$.nickname").value(DEFAULT_NICKNAME))
-            .andExpect(jsonPath("$.cash").value(DEFAULT_CASH.intValue()));
+            .andExpect(jsonPath("$.cash").value(DEFAULT_CASH.intValue()))
+            .andExpect(jsonPath("$.card1").value(DEFAULT_CARD_1.intValue()))
+            .andExpect(jsonPath("$.card2").value(DEFAULT_CARD_2.intValue()));
     }
 
     @Test
@@ -173,7 +189,9 @@ public class PlayerResourceIT {
         em.detach(updatedPlayer);
         updatedPlayer
             .nickname(UPDATED_NICKNAME)
-            .cash(UPDATED_CASH);
+            .cash(UPDATED_CASH)
+            .card1(UPDATED_CARD_1)
+            .card2(UPDATED_CARD_2);
 
         restPlayerMockMvc.perform(put("/api/players").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -186,6 +204,8 @@ public class PlayerResourceIT {
         Player testPlayer = playerList.get(playerList.size() - 1);
         assertThat(testPlayer.getNickname()).isEqualTo(UPDATED_NICKNAME);
         assertThat(testPlayer.getCash()).isEqualTo(UPDATED_CASH);
+        assertThat(testPlayer.getCard1()).isEqualTo(UPDATED_CARD_1);
+        assertThat(testPlayer.getCard2()).isEqualTo(UPDATED_CARD_2);
     }
 
     @Test

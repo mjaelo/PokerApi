@@ -25,6 +25,8 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="nickname"><span jhiTranslate="pokerApp.player.nickname">Nickname</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="cash"><span jhiTranslate="pokerApp.player.cash">Cash</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="card1"><span jhiTranslate="pokerApp.player.card1">Card 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="card2"><span jhiTranslate="pokerApp.player.card2">Card 2</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="pokerApp.player.user">User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -34,6 +36,8 @@
                     <td><a [routerLink]="['/player', player.id, 'view']">{{ player.id }}</a></td>
                     <td>{{ player.nickname }}</td>
                     <td>{{ player.cash }}</td>
+                    <td>{{ player.card1 }}</td>
+                    <td>{{ player.card2 }}</td>
                     <td>
                         {{ player.user?.login }}
                     </td>
