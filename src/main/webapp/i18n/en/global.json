@@ -8,6 +8,8 @@
       "entities": {
         "main": "Entities",
         "player": "Player",
+        "game": "Game",
+        "dealWinner": "Deal Winner",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

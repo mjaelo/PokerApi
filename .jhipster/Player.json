@@ -20,6 +20,14 @@
         {
             "fieldName": "cash",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "card1",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "card2",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20200410173353",

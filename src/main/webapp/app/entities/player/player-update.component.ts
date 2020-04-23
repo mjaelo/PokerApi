@@ -22,6 +22,8 @@ export class PlayerUpdateComponent implements OnInit {
     id: [],
     nickname: [],
     cash: [],
+    card1: [],
+    card2: [],
     user: []
   });
 
@@ -45,6 +47,8 @@ export class PlayerUpdateComponent implements OnInit {
       id: player.id,
       nickname: player.nickname,
       cash: player.cash,
+      card1: player.card1,
+      card2: player.card2,
       user: player.user
     });
   }
@@ -69,6 +73,8 @@ export class PlayerUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       nickname: this.editForm.get(['nickname'])!.value,
       cash: this.editForm.get(['cash'])!.value,
+      card1: this.editForm.get(['card1'])!.value,
+      card2: this.editForm.get(['card2'])!.value,
       user: this.editForm.get(['user'])!.value
     };
   }

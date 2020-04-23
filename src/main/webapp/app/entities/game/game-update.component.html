@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-game-heading" jhiTranslate="pokerApp.game.home.createOrEditLabel">Create or edit a Game</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.card1" for="field_card1">Card 1</label>
+                    <input type="number" class="form-control" name="card1" id="field_card1"
+                           formControlName="card1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.card2" for="field_card2">Card 2</label>
+                    <input type="number" class="form-control" name="card2" id="field_card2"
+                           formControlName="card2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.card3" for="field_card3">Card 3</label>
+                    <input type="number" class="form-control" name="card3" id="field_card3"
+                           formControlName="card3"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.card4" for="field_card4">Card 4</label>
+                    <input type="number" class="form-control" name="card4" id="field_card4"
+                           formControlName="card4"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.card5" for="field_card5">Card 5</label>
+                    <input type="number" class="form-control" name="card5" id="field_card5"
+                           formControlName="card5"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.player2" for="field_player2">Player 2</label>
+                    <select class="form-control" id="field_player2" name="player2" formControlName="player2">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="playerOption.id === editForm.get('player2')!.value?.id ? editForm.get('player2')!.value : playerOption" *ngFor="let playerOption of player2s; trackBy: trackById">{{ playerOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.player1" for="field_player1">Player 1</label>
+                    <select class="form-control" id="field_player1" name="player1" formControlName="player1">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="playerOption.id === editForm.get('player1')!.value?.id ? editForm.get('player1')!.value : playerOption" *ngFor="let playerOption of player1s; trackBy: trackById">{{ playerOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

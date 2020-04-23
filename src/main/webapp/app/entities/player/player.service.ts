@@ -36,7 +36,7 @@ export class PlayerService {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  findByNickname(nickname: string): Observable<EntityResponseType> {
+  findByNickname(nickname: String): Observable<EntityResponseType>{
     return this.http.get<IPlayer>(`${this.resourceUrl}/nickname/${nickname}`, { observe: 'response' });
   }
 }

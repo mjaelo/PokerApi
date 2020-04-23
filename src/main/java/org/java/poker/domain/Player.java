@@ -29,6 +29,12 @@ public class Player implements Serializable {
     @Column(name = "cash")
     private Long cash;
 
+    @Column(name = "card_1")
+    private Long card1;
+
+    @Column(name = "card_2")
+    private Long card2;
+
     @OneToOne
     @JoinColumn(unique = true)
     private User user;
@@ -68,6 +74,32 @@ public class Player implements Serializable {
         this.cash = cash;
     }
 
+    public Long getCard1() {
+        return card1;
+    }
+
+    public Player card1(Long card1) {
+        this.card1 = card1;
+        return this;
+    }
+
+    public void setCard1(Long card1) {
+        this.card1 = card1;
+    }
+
+    public Long getCard2() {
+        return card2;
+    }
+
+    public Player card2(Long card2) {
+        this.card2 = card2;
+        return this;
+    }
+
+    public void setCard2(Long card2) {
+        this.card2 = card2;
+    }
+
     public User getUser() {
         return user;
     }
@@ -104,6 +136,8 @@ public class Player implements Serializable {
             "id=" + getId() +
             ", nickname='" + getNickname() + "'" +
             ", cash=" + getCash() +
+            ", card1=" + getCard1() +
+            ", card2=" + getCard2() +
             "}";
     }
 }

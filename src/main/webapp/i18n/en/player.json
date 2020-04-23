@@ -18,6 +18,8 @@
       },
       "nickname": "Nickname",
       "cash": "Cash",
+      "card1": "Card 1",
+      "card2": "Card 2",
       "user": "User"
     }
   }

@@ -1,0 +1,23 @@
+{
+  "pokerApp": {
+    "dealWinner": {
+      "home": {
+        "title": "Deal Winners",
+        "createLabel": "Create a new Deal Winner",
+        "createOrEditLabel": "Create or edit a Deal Winner",
+        "notFound": "No Deal Winners found"
+      },
+      "created": "A new Deal Winner is created with identifier {{ param }}",
+      "updated": "A Deal Winner is updated with identifier {{ param }}",
+      "deleted": "A Deal Winner is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Deal Winner {{ id }}?"
+      },
+      "detail": {
+        "title": "Deal Winner"
+      },
+      "winner": "Winner",
+      "game": "Game"
+    }
+  }
+}
