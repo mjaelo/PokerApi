@@ -1,7 +1,6 @@
 package org.java.poker.web.rest;
 
 import org.java.poker.domain.Game;
-import org.java.poker.domain.Player;
 import org.java.poker.service.GameService;
 import org.java.poker.web.rest.errors.BadRequestAlertException;
 
@@ -57,16 +56,16 @@ public class GameResource {
             .body(result);
     }
 
-    @GetMapping("/games/join-player/{playerId}")
-    public void joinPlayer(@PathVariable Long playerId){
-        gameService.joinPlayer(playerId);
-    }
-
-//    @PostMapping("/games/join-player")
-//    public void joinPlayer(@RequestBody Player player) throws URISyntaxException {
-//        Game result = gameService.joinPlayer(player);
-//        return;
+    //    @GetMapping("/games/join-player/{playerId}")
+//    public void joinPlayer(@PathVariable Long playerId){
+//        gameService.joinPlayer(playerId);
 //    }
+
+    @GetMapping("/join-player/{playerId}")
+    public String joinPlayer(@PathVariable String playerId) {
+        gameService.joinPlayer(playerId);
+        return "Joined";
+    }
 
 //    @PostMapping("/games/join-player")
 //    public String joinPlayer(@RequestBody Long id){

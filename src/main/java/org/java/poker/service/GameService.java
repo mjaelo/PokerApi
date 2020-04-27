@@ -23,14 +23,41 @@ public class GameService {
     private final Logger log = LoggerFactory.getLogger(GameService.class);
 
     private final GameRepository gameRepository;
-    private final PlayerRepository playerRepository;
+    private PlayerRepository playerRepository;
 
     private Game createGame = new Game();
-//    private Player player = new Player();
 
     public GameService(GameRepository gameRepository, PlayerRepository playerRepository) {
         this.gameRepository = gameRepository;
         this.playerRepository = playerRepository;
+    }
+
+    public String joinPlayer(String playerId) {
+        Player player = playerRepository.getOne(Long.parseLong(playerId));
+
+        List<Game> games = gameRepository.findAll();
+
+        if (games.isEmpty()) {
+            Game game = new Game();
+            game.setPlayer1Id(null);
+            game.setPlayer2Id(null);
+            games.add(game);
+        }
+
+        for (Game game : games) {
+            if (game.getPlayer1Id() == null) {
+                game.setPlayer1Id(player.getId());
+                game.setPlayer1(player);
+                gameRepository.save(game);
+                return "Joined";
+            } else if (game.getPlayer2Id() == null) {
+                game.setPlayer2Id(player.getId());
+                game.setPlayer2(player);
+                gameRepository.save(game);
+                return "Joined";
+            }
+        }
+        return "Joined";
     }
 
     /**
@@ -42,19 +69,6 @@ public class GameService {
     public Game save(Game game) {
         log.debug("Request to save Game : {}", game);
         return gameRepository.save(game);
-    }
-
-    public Game joinPlayer(long id) {
-        Player player = playerRepository.getOne(id);
-
-        if (createGame.getPlayer1() == null) {
-            createGame.setPlayer1(player);
-        }
-        if ((createGame.getPlayer1() != null) && (createGame.getPlayer2() == null)) {
-            createGame.setPlayer2(player);
-            return gameRepository.save(createGame);
-        }
-        return null;
     }
 
     /**

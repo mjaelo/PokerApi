@@ -28,6 +28,8 @@
                     <th scope="col" ><span jhiTranslate="pokerApp.game.card3">Card 3</span></th>
                     <th scope="col" ><span jhiTranslate="pokerApp.game.card4">Card 4</span></th>
                     <th scope="col" ><span jhiTranslate="pokerApp.game.card5">Card 5</span></th>
+                    <th scope="col" ><span jhiTranslate="pokerApp.game.player1Id">Player 1 Id</span></th>
+                    <th scope="col" ><span jhiTranslate="pokerApp.game.player2Id">Player 2 Id</span></th>
                     <th scope="col" ><span jhiTranslate="pokerApp.game.player2">Player 2</span></th>
                     <th scope="col" ><span jhiTranslate="pokerApp.game.player1">Player 1</span></th>
                     <th scope="col"></th>
@@ -41,6 +43,8 @@
                     <td>{{ game.card3 }}</td>
                     <td>{{ game.card4 }}</td>
                     <td>{{ game.card5 }}</td>
+                    <td>{{ game.player1Id }}</td>
+                    <td>{{ game.player2Id }}</td>
                     <td>
                         <div *ngIf="game.player2">
                             <a [routerLink]="['/player', game.player2?.id, 'view']" >{{ game.player2?.id }}</a>

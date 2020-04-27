@@ -38,6 +38,12 @@ public class Game implements Serializable {
     @Column(name = "card_5")
     private Long card5;
 
+    @Column(name = "player_1_id")
+    private Long player1Id;
+
+    @Column(name = "player_2_id")
+    private Long player2Id;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Player player2;
@@ -120,6 +126,32 @@ public class Game implements Serializable {
         this.card5 = card5;
     }
 
+    public Long getPlayer1Id() {
+        return player1Id;
+    }
+
+    public Game player1Id(Long player1Id) {
+        this.player1Id = player1Id;
+        return this;
+    }
+
+    public void setPlayer1Id(Long player1Id) {
+        this.player1Id = player1Id;
+    }
+
+    public Long getPlayer2Id() {
+        return player2Id;
+    }
+
+    public Game player2Id(Long player2Id) {
+        this.player2Id = player2Id;
+        return this;
+    }
+
+    public void setPlayer2Id(Long player2Id) {
+        this.player2Id = player2Id;
+    }
+
     public Player getPlayer2() {
         return player2;
     }
@@ -172,6 +204,8 @@ public class Game implements Serializable {
             ", card3=" + getCard3() +
             ", card4=" + getCard4() +
             ", card5=" + getCard5() +
+            ", player1Id=" + getPlayer1Id() +
+            ", player2Id=" + getPlayer2Id() +
             "}";
     }
 }

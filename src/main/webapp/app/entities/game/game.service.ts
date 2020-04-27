@@ -3,8 +3,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { IGame } from 'app/shared/model/game.model';
+import {createRequestOption} from 'app/shared/util/request-util';
+import {IGame} from 'app/shared/model/game.model';
 
 type EntityResponseType = HttpResponse<IGame>;
 type EntityArrayResponseType = HttpResponse<IGame[]>;
@@ -12,7 +12,7 @@ type EntityArrayResponseType = HttpResponse<IGame[]>;
 @Injectable({ providedIn: 'root' })
 export class GameService {
   public resourceUrl = SERVER_API_URL + 'api/games';
-  private joinUrl = this.resourceUrl + '/join-player';
+  public joinUrl = SERVER_API_URL + 'api/join-player/';
 
   constructor(protected http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class GameService {
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http.get<IGame>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http.get<IGame>(`${this.resourceUrl}/${id}`, {observe: 'response'});
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
@@ -35,5 +35,10 @@ export class GameService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, {observe: 'response'});
+  }
+
+  joinPlayer(playerId: string): Observable<string> {
+    console.warn(`${this.joinUrl}${playerId}`);
+    return this.http.get<string>(`${this.joinUrl}${playerId}`, {observe: 'response'});
   }
 }

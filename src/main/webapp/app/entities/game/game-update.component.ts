@@ -27,6 +27,8 @@ export class GameUpdateComponent implements OnInit {
     card3: [],
     card4: [],
     card5: [],
+    player1Id: [],
+    player2Id: [],
     player2: [],
     player1: []
   });
@@ -96,6 +98,8 @@ export class GameUpdateComponent implements OnInit {
       card3: game.card3,
       card4: game.card4,
       card5: game.card5,
+      player1Id: game.player1Id,
+      player2Id: game.player2Id,
       player2: game.player2,
       player1: game.player1
     });
@@ -124,6 +128,8 @@ export class GameUpdateComponent implements OnInit {
       card3: this.editForm.get(['card3'])!.value,
       card4: this.editForm.get(['card4'])!.value,
       card5: this.editForm.get(['card5'])!.value,
+      player1Id: this.editForm.get(['player1Id'])!.value,
+      player2Id: this.editForm.get(['player2Id'])!.value,
       player2: this.editForm.get(['player2'])!.value,
       player1: this.editForm.get(['player1'])!.value
     };
