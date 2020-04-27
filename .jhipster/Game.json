@@ -41,6 +41,14 @@
         {
             "fieldName": "card5",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "player1Id",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "player2Id",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20200420154000",

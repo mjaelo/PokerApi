@@ -56,6 +56,26 @@ public class GameResource {
             .body(result);
     }
 
+    //    @GetMapping("/games/join-player/{playerId}")
+//    public void joinPlayer(@PathVariable Long playerId){
+//        gameService.joinPlayer(playerId);
+//    }
+
+    @GetMapping("/join-player/{playerId}")
+    public String joinPlayer(@PathVariable String playerId) {
+        gameService.joinPlayer(playerId);
+        return "Joined";
+    }
+
+//    @PostMapping("/games/join-player")
+//    public String joinPlayer(@RequestBody Long id){
+//        if(true){
+//            return "Works";
+//        }
+//        gameService.joinPlayer(id);
+//        return "Player Joined";
+//    }
+
     /**
      * {@code PUT  /games} : Updates an existing game.
      *

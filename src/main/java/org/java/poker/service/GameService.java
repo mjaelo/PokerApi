@@ -1,7 +1,9 @@
 package org.java.poker.service;
 
 import org.java.poker.domain.Game;
+import org.java.poker.domain.Player;
 import org.java.poker.repository.GameRepository;
+import org.java.poker.repository.PlayerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +23,41 @@ public class GameService {
     private final Logger log = LoggerFactory.getLogger(GameService.class);
 
     private final GameRepository gameRepository;
+    private PlayerRepository playerRepository;
 
-    public GameService(GameRepository gameRepository) {
+    private Game createGame = new Game();
+
+    public GameService(GameRepository gameRepository, PlayerRepository playerRepository) {
         this.gameRepository = gameRepository;
+        this.playerRepository = playerRepository;
+    }
+
+    public String joinPlayer(String playerId) {
+        Player player = playerRepository.getOne(Long.parseLong(playerId));
+
+        List<Game> games = gameRepository.findAll();
+
+        if (games.isEmpty()) {
+            Game game = new Game();
+            game.setPlayer1Id(null);
+            game.setPlayer2Id(null);
+            games.add(game);
+        }
+
+        for (Game game : games) {
+            if (game.getPlayer1Id() == null) {
+                game.setPlayer1Id(player.getId());
+                game.setPlayer1(player);
+                gameRepository.save(game);
+                return "Joined";
+            } else if (game.getPlayer2Id() == null) {
+                game.setPlayer2Id(player.getId());
+                game.setPlayer2(player);
+                gameRepository.save(game);
+                return "Joined";
+            }
+        }
+        return "Joined";
     }
 
     /**

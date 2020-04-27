@@ -42,6 +42,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.player1Id" for="field_player1Id">Player 1 Id</label>
+                    <input type="number" class="form-control" name="player1Id" id="field_player1Id"
+                           formControlName="player1Id"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="pokerApp.game.player2Id" for="field_player2Id">Player 2 Id</label>
+                    <input type="number" class="form-control" name="player2Id" id="field_player2Id"
+                           formControlName="player2Id"/>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="pokerApp.game.player2" for="field_player2">Player 2</label>
                     <select class="form-control" id="field_player2" name="player2" formControlName="player2">
                         <option [ngValue]="null"></option>

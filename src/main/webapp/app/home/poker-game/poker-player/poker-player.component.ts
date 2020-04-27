@@ -11,19 +11,21 @@ export class PokerPlayerComponent implements OnInit {
   @Input() login: string;
 
   player: Player | null = new Player();
-  gameId: Number;
+  playerId: number;
+  gameId: number;
+  card1 = '2C';
+  card2 = '10H';
+
 
   constructor(private playerService: PlayerService) {
   }
 
   ngOnInit(): void {
     this.playerService.findByNickname(this.login)
-      .subscribe(resp => (this.player = resp.body));
-    this.findGame();
+      .subscribe(
+        resp => {
+          this.player = resp.body;
+          // this.playerId = this.player?.id;
+        });
   }
-
-  findGame(): void {
-
-  }
-
 }

@@ -1,0 +1,19 @@
+.table-container {
+  background-color: #737373;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.card-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.card {
+  background: none;
+  border: none;
+  margin: 5px;
+  width: 12vh;
+}

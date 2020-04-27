@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(GameService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Game(0, 0, 0, 0, 0, 0);
+      elemDefault = new Game(0, 0, 0, 0, 0, 0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -58,7 +58,9 @@ describe('Service Tests', () => {
             card2: 1,
             card3: 1,
             card4: 1,
-            card5: 1
+            card5: 1,
+            player1Id: 1,
+            player2Id: 1
           },
           elemDefault
         );
@@ -79,7 +81,9 @@ describe('Service Tests', () => {
             card2: 1,
             card3: 1,
             card4: 1,
-            card5: 1
+            card5: 1,
+            player1Id: 1,
+            player2Id: 1
           },
           elemDefault
         );

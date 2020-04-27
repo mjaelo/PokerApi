@@ -47,6 +47,12 @@ public class GameResourceIT {
     private static final Long DEFAULT_CARD_5 = 1L;
     private static final Long UPDATED_CARD_5 = 2L;
 
+    private static final Long DEFAULT_PLAYER_1_ID = 1L;
+    private static final Long UPDATED_PLAYER_1_ID = 2L;
+
+    private static final Long DEFAULT_PLAYER_2_ID = 1L;
+    private static final Long UPDATED_PLAYER_2_ID = 2L;
+
     @Autowired
     private GameRepository gameRepository;
 
@@ -73,7 +79,9 @@ public class GameResourceIT {
             .card2(DEFAULT_CARD_2)
             .card3(DEFAULT_CARD_3)
             .card4(DEFAULT_CARD_4)
-            .card5(DEFAULT_CARD_5);
+            .card5(DEFAULT_CARD_5)
+            .player1Id(DEFAULT_PLAYER_1_ID)
+            .player2Id(DEFAULT_PLAYER_2_ID);
         return game;
     }
     /**
@@ -88,7 +96,9 @@ public class GameResourceIT {
             .card2(UPDATED_CARD_2)
             .card3(UPDATED_CARD_3)
             .card4(UPDATED_CARD_4)
-            .card5(UPDATED_CARD_5);
+            .card5(UPDATED_CARD_5)
+            .player1Id(UPDATED_PLAYER_1_ID)
+            .player2Id(UPDATED_PLAYER_2_ID);
         return game;
     }
 
@@ -117,6 +127,8 @@ public class GameResourceIT {
         assertThat(testGame.getCard3()).isEqualTo(DEFAULT_CARD_3);
         assertThat(testGame.getCard4()).isEqualTo(DEFAULT_CARD_4);
         assertThat(testGame.getCard5()).isEqualTo(DEFAULT_CARD_5);
+        assertThat(testGame.getPlayer1Id()).isEqualTo(DEFAULT_PLAYER_1_ID);
+        assertThat(testGame.getPlayer2Id()).isEqualTo(DEFAULT_PLAYER_2_ID);
     }
 
     @Test
@@ -154,7 +166,9 @@ public class GameResourceIT {
             .andExpect(jsonPath("$.[*].card2").value(hasItem(DEFAULT_CARD_2.intValue())))
             .andExpect(jsonPath("$.[*].card3").value(hasItem(DEFAULT_CARD_3.intValue())))
             .andExpect(jsonPath("$.[*].card4").value(hasItem(DEFAULT_CARD_4.intValue())))
-            .andExpect(jsonPath("$.[*].card5").value(hasItem(DEFAULT_CARD_5.intValue())));
+            .andExpect(jsonPath("$.[*].card5").value(hasItem(DEFAULT_CARD_5.intValue())))
+            .andExpect(jsonPath("$.[*].player1Id").value(hasItem(DEFAULT_PLAYER_1_ID.intValue())))
+            .andExpect(jsonPath("$.[*].player2Id").value(hasItem(DEFAULT_PLAYER_2_ID.intValue())));
     }
     
     @Test
@@ -172,7 +186,9 @@ public class GameResourceIT {
             .andExpect(jsonPath("$.card2").value(DEFAULT_CARD_2.intValue()))
             .andExpect(jsonPath("$.card3").value(DEFAULT_CARD_3.intValue()))
             .andExpect(jsonPath("$.card4").value(DEFAULT_CARD_4.intValue()))
-            .andExpect(jsonPath("$.card5").value(DEFAULT_CARD_5.intValue()));
+            .andExpect(jsonPath("$.card5").value(DEFAULT_CARD_5.intValue()))
+            .andExpect(jsonPath("$.player1Id").value(DEFAULT_PLAYER_1_ID.intValue()))
+            .andExpect(jsonPath("$.player2Id").value(DEFAULT_PLAYER_2_ID.intValue()));
     }
 
     @Test
@@ -200,7 +216,9 @@ public class GameResourceIT {
             .card2(UPDATED_CARD_2)
             .card3(UPDATED_CARD_3)
             .card4(UPDATED_CARD_4)
-            .card5(UPDATED_CARD_5);
+            .card5(UPDATED_CARD_5)
+            .player1Id(UPDATED_PLAYER_1_ID)
+            .player2Id(UPDATED_PLAYER_2_ID);
 
         restGameMockMvc.perform(put("/api/games").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -216,6 +234,8 @@ public class GameResourceIT {
         assertThat(testGame.getCard3()).isEqualTo(UPDATED_CARD_3);
         assertThat(testGame.getCard4()).isEqualTo(UPDATED_CARD_4);
         assertThat(testGame.getCard5()).isEqualTo(UPDATED_CARD_5);
+        assertThat(testGame.getPlayer1Id()).isEqualTo(UPDATED_PLAYER_1_ID);
+        assertThat(testGame.getPlayer2Id()).isEqualTo(UPDATED_PLAYER_2_ID);
     }
 
     @Test
