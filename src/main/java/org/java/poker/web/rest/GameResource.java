@@ -1,6 +1,7 @@
 package org.java.poker.web.rest;
 
 import org.java.poker.domain.Game;
+import org.java.poker.domain.Player;
 import org.java.poker.service.GameService;
 import org.java.poker.web.rest.errors.BadRequestAlertException;
 
@@ -55,6 +56,26 @@ public class GameResource {
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
+    @GetMapping("/games/join-player/{playerId}")
+    public void joinPlayer(@PathVariable Long playerId){
+        gameService.joinPlayer(playerId);
+    }
+
+//    @PostMapping("/games/join-player")
+//    public void joinPlayer(@RequestBody Player player) throws URISyntaxException {
+//        Game result = gameService.joinPlayer(player);
+//        return;
+//    }
+
+//    @PostMapping("/games/join-player")
+//    public String joinPlayer(@RequestBody Long id){
+//        if(true){
+//            return "Works";
+//        }
+//        gameService.joinPlayer(id);
+//        return "Player Joined";
+//    }
 
     /**
      * {@code PUT  /games} : Updates an existing game.

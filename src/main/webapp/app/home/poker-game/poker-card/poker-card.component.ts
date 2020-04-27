@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'jhi-poker-card',
@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./poker-card.component.scss']
 })
 export class PokerCardComponent implements OnInit {
+  @Input() cardName: string;
 
-  nazwa: string;
+  card: string;
 
   constructor() {}
 
@@ -16,6 +17,6 @@ export class PokerCardComponent implements OnInit {
   }
 
   fun(): void {
-    this.nazwa = '../../../../content/images/cards-pictures/2H.png';
+    this.card = '../../../../content/images/cards-pictures/'+this.cardName+'.png';
   }
 }

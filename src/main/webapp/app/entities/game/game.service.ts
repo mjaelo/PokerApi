@@ -12,6 +12,7 @@ type EntityArrayResponseType = HttpResponse<IGame[]>;
 @Injectable({ providedIn: 'root' })
 export class GameService {
   public resourceUrl = SERVER_API_URL + 'api/games';
+  private joinUrl = this.resourceUrl + '/join-player';
 
   constructor(protected http: HttpClient) {}
 
@@ -29,10 +30,10 @@ export class GameService {
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IGame[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http.get<IGame[]>(this.resourceUrl, {params: options, observe: 'response'});
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http.delete(`${this.resourceUrl}/${id}`, {observe: 'response'});
   }
 }
