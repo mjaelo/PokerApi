@@ -36,7 +36,7 @@ export class PokerPlayerComponent implements OnInit {
   }
 
   join():void{
-    this.isJoined = this.joinGame();
+    // this.isJoined = this.joinGame();
     console.warn(this.isJoined);
   }
 
