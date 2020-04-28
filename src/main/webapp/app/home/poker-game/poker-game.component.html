@@ -1,7 +1,11 @@
-<div *ngIf="!inGame" class="join-alert">
+<div *ngIf="showJoin()" class="join-alert">
     <p>Click below to find game for you</p>
     <button (click)="joinGame()">Find game</button>
 </div>
+<div *ngIf="waiting" class="waiting-alert">
+    <p>Click below to check if your opponent joined</p>
+    <button (click)="isGame()">Check</button>
+</div>
 <jhi-poker-table *ngIf="inGame"></jhi-poker-table>
 <jhi-poker-player *ngIf="showPlayer()" [login]=login></jhi-poker-player>
-<button *ngIf="inGame" (click)="leaveGame()">Leave game</button>
+<button *ngIf="!showJoin()" (click)="leaveGame()" class="leave-game-btn">Leave game</button>

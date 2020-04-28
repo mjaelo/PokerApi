@@ -9,3 +9,24 @@
     font-weight: bold;
   }
 }
+
+.waiting-alert {
+  background-color: #d9ce7f;
+  color: #6d651f;
+  padding: 30px;
+  text-align: center;
+
+  p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.leave-game-btn {
+  float: right;
+  margin-top: 10px;
+  background-color: rgba(191, 75, 75, 1);
+  padding: 10px;
+  border: 1px solid #eeeeee;
+  color: #eeeeee;
+}

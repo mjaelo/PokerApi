@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {GameService} from "app/entities/game/game.service";
 import {PlayerService} from "app/entities/player/player.service";
 import {Player} from "app/shared/model/player.model";
+import {Game} from "app/shared/model/game.model";
 
 @Component({
   selector: 'jhi-poker-game',
@@ -14,6 +15,8 @@ export class PokerGameComponent implements OnInit {
   player: Player | null = new Player();
   playerId: number | undefined;
   inGame: boolean = false;
+  currentGame: Game | null = new Game();
+  waiting: boolean = false;
 
   constructor(private playerService: PlayerService, private gameService: GameService) {
   }
@@ -24,7 +27,21 @@ export class PokerGameComponent implements OnInit {
         resp => {
           this.player = resp.body;
           this.playerId = this.player?.id;
+          this.isGame();
         });
+  }
+
+  isGame(): void {
+    if (this.playerId! > 0) {
+      this.gameService.findByPlayerId(this.playerId)
+        .subscribe(resp => {
+          this.currentGame = resp.body;
+          if (this.currentGame?.player1Id && this.currentGame?.player2Id) {
+            this.inGame = true;
+            this.waiting = false;
+          }
+        });
+    }
   }
 
   showPlayer(): boolean {
@@ -36,19 +53,24 @@ export class PokerGameComponent implements OnInit {
   }
 
   joinGame(): void {
-    this.gameService.joinPlayer(this.playerId as string)
+    this.gameService.joinPlayer('' + this.playerId)
       .subscribe();
-    console.warn(this.playerId);
-    this.isGame();
+    this.waiting = true;
   }
 
   leaveGame(): void {
+    this.waiting = false;
     this.inGame = false;
+      this.gameService.delete(this.currentGame!.id).
+      subscribe(() => {
+      });
   }
 
-  isGame(): void {
-    do {
-      console.warn(true);
-    } while (this.inGame);
+  showJoin(): boolean {
+    if (!this.waiting && !this.inGame) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

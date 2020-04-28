@@ -103,4 +103,15 @@ public class GameService {
         log.debug("Request to delete Game : {}", id);
         gameRepository.deleteById(id);
     }
+
+    @Transactional(readOnly = true)
+    public Optional<Game> findByPlayerId(Long playerId) {
+        if (gameRepository.findByPlayer1Id(playerId).isPresent()) {
+            return gameRepository.findByPlayer1Id(playerId);
+        } else if (gameRepository.findByPlayer2Id(playerId).isPresent()) {
+            return gameRepository.findByPlayer2Id(playerId);
+        } else {
+            return null;
+        }
+    }
 }

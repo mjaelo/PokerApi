@@ -38,7 +38,6 @@ export class PokerTableComponent implements OnInit {
     card.name='purple_back';
     this.cards.push(card);
 
-
     card = new Card();
     card.id = 5;
     card.name='purple_back';
