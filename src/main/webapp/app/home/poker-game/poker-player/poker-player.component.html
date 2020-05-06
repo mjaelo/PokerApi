@@ -13,11 +13,8 @@
     <div class="card-container">
         <h3>Your cards</h3>
         <div class="cards">
-            <div class="card">
-                <jhi-poker-card [cardName]=card1></jhi-poker-card>
-            </div>
-            <div class=card>
-                <jhi-poker-card [cardName]=card2></jhi-poker-card>
+            <div class="card" *ngFor="let card of cards">
+                <jhi-poker-card [cardName]=card.name></jhi-poker-card>
             </div>
         </div>
     </div>

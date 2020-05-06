@@ -67,14 +67,11 @@ public class GameResource {
         return "Joined";
     }
 
-//    @PostMapping("/games/join-player")
-//    public String joinPlayer(@RequestBody Long id){
-//        if(true){
-//            return "Works";
-//        }
-//        gameService.joinPlayer(id);
-//        return "Player Joined";
-//    }
+    @GetMapping("/games/player/{playerId}")
+    public ResponseEntity<Game> findByPlayerId(@PathVariable Long playerId){
+        Optional<Game> result = gameService.findByPlayerId(playerId);
+        return ResponseUtil.wrapOrNotFound(result);
+    }
 
     /**
      * {@code PUT  /games} : Updates an existing game.

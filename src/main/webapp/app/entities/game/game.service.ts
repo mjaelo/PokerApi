@@ -38,7 +38,11 @@ export class GameService {
   }
 
   joinPlayer(playerId: string): Observable<string> {
-    console.warn(`${this.joinUrl}${playerId}`);
-    return this.http.get<string>(`${this.joinUrl}${playerId}`, {observe: 'response'});
+    return this.http.get<string>(`${this.joinUrl}${playerId}`);
   }
+
+  findByPlayerId(playerId: number | undefined): Observable<EntityResponseType> {
+    return this.http.get<IGame>(`${this.resourceUrl}/player/${playerId}`, {observe: 'response'});
+  }
+
 }

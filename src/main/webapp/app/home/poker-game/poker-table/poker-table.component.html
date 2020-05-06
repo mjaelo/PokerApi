@@ -1,3 +1,14 @@
+<div class="opponent-container" *ngIf="opponent">
+    <div class="opponent-data">
+        <h2>Your opponent: {{opponent.nickname}}</h2>
+        <p class="cash">cash: {{opponent.cash}}</p>
+    </div>
+
+    <div class="card-container">
+        <div class="card" *ngFor="let card of opponentCards"><jhi-poker-card [cardName]="card.name"></jhi-poker-card> </div>
+        <button (click)="showOpponentCards()">show opponent cards</button>
+    </div>
+</div>
 <div class="table-container">
     <h2>Table</h2>
 
