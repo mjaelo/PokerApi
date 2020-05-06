@@ -32,11 +32,11 @@ export class PokerGameComponent implements OnInit {
   }
 
   isGame(): void {
-    if (this.playerId! > 0) {
+    if (this.player) {
       this.gameService.findByPlayerId(this.playerId)
         .subscribe(resp => {
           this.currentGame = resp.body;
-          if (this.currentGame?.player1Id && this.currentGame?.player2Id) {
+          if (this.currentGame && (this.currentGame.player1Id && this.currentGame.player2Id)) {
             this.inGame = true;
             this.waiting = false;
           }
@@ -61,9 +61,10 @@ export class PokerGameComponent implements OnInit {
   leaveGame(): void {
     this.waiting = false;
     this.inGame = false;
-      this.gameService.delete(this.currentGame!.id).
-      subscribe(() => {
+    if (this.currentGame) {
+      this.gameService.delete(this.currentGame.id!).subscribe(() => {
       });
+    }
   }
 
   showJoin(): boolean {

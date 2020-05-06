@@ -6,6 +6,8 @@
     <p>Click below to check if your opponent joined</p>
     <button (click)="isGame()">Check</button>
 </div>
-<jhi-poker-table *ngIf="inGame"></jhi-poker-table>
-<jhi-poker-player *ngIf="showPlayer()" [login]=login></jhi-poker-player>
+<span *ngIf="player">
+<jhi-poker-table *ngIf="inGame" [login]="login" [currentGame]="currentGame"></jhi-poker-table>
+<jhi-poker-player *ngIf="showPlayer()" [login]=login [currentGame]="currentGame"></jhi-poker-player>
 <button *ngIf="!showJoin()" (click)="leaveGame()" class="leave-game-btn">Leave game</button>
+</span>
