@@ -60,11 +60,12 @@ export class CardMap {
     {id: 57, symbol: "yellow_back"},
   ];
 
-  public mapToSym(id: number): string{
+  public mapToSym(id: number): string {
     for (const card of this.cards) {
       if (card.id === id) {
         return card.symbol;
       }
     }
+    return "";
   }
 }

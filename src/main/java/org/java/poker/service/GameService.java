@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * Service Implementation for managing {@link Game}.
@@ -53,11 +54,41 @@ public class GameService {
             } else if (game.getPlayer2Id() == null) {
                 game.setPlayer2Id(player.getId());
                 game.setPlayer2(player);
-                gameRepository.save(game);
+                shuffleAndStart(game, game.getPlayer1Id(), game.getPlayer2Id());
                 return "Joined";
             }
         }
         return "Joined";
+    }
+
+    private void shuffleAndStart(Game game, Long player1Id, Long player2Id){
+        int random = (int) (1 + (Math.random() * (52-1)));
+        game.setCard1((long) random);
+        random = (int) (1 + (Math.random() * (52-1)));
+        game.setCard2((long) random);
+        random = (int) (1 + (Math.random() * (52-1)));
+        game.setCard3((long) random);
+        random = (int) (1 + (Math.random() * (52-1)));
+        game.setCard4((long) random);
+        random = (int) (1 + (Math.random() * (52-1)));
+        game.setCard5((long) random);
+
+        Player player1 = playerRepository.getOne(player1Id);
+        Player player2 = playerRepository.getOne(player2Id);
+
+        player1.setCard1((long) (1 + (Math.random() * (52-1))));
+        player1.setCard2((long) (1 + (Math.random() * (52-1))));
+        player2.setCard1((long) (1 + (Math.random() * (52-1))));
+        player2.setCard2((long) (1 + (Math.random() * (52-1))));
+        playerRepository.save(player1);
+        playerRepository.save(player2);
+        game.setPlayer1(player1);
+        game.setPlayer2(player2);
+        gameRepository.save(game);
+    }
+
+    private void dealWinner(){
+
     }
 
     /**

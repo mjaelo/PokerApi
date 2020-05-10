@@ -35,16 +35,15 @@ export class PokerPlayerComponent implements OnInit {
   setCards(): void {
     if (this.player) {
       let card = new Card();
-      this.player.card1 = 42;
-      card.id = this.player.card1;
-      card.name = this.cardMap.mapToSym(this.player.card1);
+      card.id = this.player.card1!;
+      card.name = this.cardMap.mapToSym(this.player.card1!);
+      this.cards.push(card);
       console.warn(card);
-      this.cards.push(card);
       card = new Card();
-      this.player.card2 = 33;
-      card.id = this.player.card2;
-      card.name = this.cardMap.mapToSym(this.player.card2);
+      card.id = this.player.card2!;
+      card.name = this.cardMap.mapToSym(this.player.card2!);
       this.cards.push(card);
+      console.warn(card);
     }
   }
 }

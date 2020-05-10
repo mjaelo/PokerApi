@@ -28,30 +28,32 @@ export class PokerTableComponent implements OnInit {
   }
 
   setSampleCards(): void {
-    let card = new Card();
-    card.id = 1;
-    card.name = '2H';
-    this.cards.push(card);
+    if (this.currentGame) {
+      let card = new Card();
+      card.id = this.currentGame.card1!;
+      card.name = this.cardMap.mapToSym(card.id);
+      this.cards.push(card);
 
-    card = new Card();
-    card.id = 2;
-    card.name = 'QH';
-    this.cards.push(card);
+      card = new Card();
+      card.id = this.currentGame.card2!;
+      card.name = this.cardMap.mapToSym(card.id);
+      this.cards.push(card);
 
-    card = new Card();
-    card.id = 3;
-    card.name = '10H';
-    this.cards.push(card);
+      card = new Card();
+      card.id = this.currentGame.card3!;
+      card.name = this.cardMap.mapToSym(card.id);
+      this.cards.push(card);
 
-    card = new Card();
-    card.id = 4;
-    card.name = 'purple_back';
-    this.cards.push(card);
+      card = new Card();
+      card.id = this.currentGame.card4!;
+      card.name = this.cardMap.mapToSym(card.id);
+      this.cards.push(card);
 
-    card = new Card();
-    card.id = 5;
-    card.name = 'purple_back';
-    this.cards.push(card);
+      card = new Card();
+      card.id = this.currentGame.card5!;
+      card.name = this.cardMap.mapToSym(card.id);
+      this.cards.push(card);
+    }
   }
 
   getOpponent(): void {
@@ -62,14 +64,12 @@ export class PokerTableComponent implements OnInit {
     }
     if (this.opponent) {
       let card = new Card();
-      this.opponent.card1 = 56;
-      card.id = this.opponent.card1;
-      card.name = this.cardMap.mapToSym(this.opponent.card1);
+      card.id = 54;
+      card.name = this.cardMap.mapToSym(card.id);
       this.opponentCards.push(card);
       card = new Card();
-      this.opponent.card2 = 56;
-      card.id = this.opponent.card2;
-      card.name = this.cardMap.mapToSym(this.opponent.card2);
+      card.id = 54;
+      card.name = this.cardMap.mapToSym(card.id);
       this.opponentCards.push(card);
     }
   }
@@ -78,14 +78,12 @@ export class PokerTableComponent implements OnInit {
     if (this.opponent) {
       this.opponentCards = [];
       let card = new Card();
-      this.opponent.card1 = 23;
-      card.id = this.opponent.card1;
-      card.name = this.cardMap.mapToSym(this.opponent.card1);
+      card.id = this.opponent.card1!;
+      card.name = this.cardMap.mapToSym(this.opponent.card1!);
       this.opponentCards.push(card);
       card = new Card();
-      this.opponent.card2 = 17;
-      card.id = this.opponent.card2;
-      card.name = this.cardMap.mapToSym(this.opponent.card2);
+      card.id = this.opponent.card2!;
+      card.name = this.cardMap.mapToSym(this.opponent.card2!);
       this.opponentCards.push(card);
     }
   }
