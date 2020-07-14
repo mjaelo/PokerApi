@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="game">
+            <h2><span jhiTranslate="pokerApp.game.detail.title">Game</span> {{ game.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pokerApp.game.card1">Card 1</span></dt>
+                <dd>
+                    <span>{{ game.card1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.card2">Card 2</span></dt>
+                <dd>
+                    <span>{{ game.card2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.card3">Card 3</span></dt>
+                <dd>
+                    <span>{{ game.card3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.card4">Card 4</span></dt>
+                <dd>
+                    <span>{{ game.card4 }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.card5">Card 5</span></dt>
+                <dd>
+                    <span>{{ game.card5 }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.player1Id">Player 1 Id</span></dt>
+                <dd>
+                    <span>{{ game.player1Id }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.player2Id">Player 2 Id</span></dt>
+                <dd>
+                    <span>{{ game.player2Id }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.p1Pot">P 1 Pot</span></dt>
+                <dd>
+                    <span>{{ game.p1Pot }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.p2Pot">P 2 Pot</span></dt>
+                <dd>
+                    <span>{{ game.p2Pot }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.pot">Pot</span></dt>
+                <dd>
+                    <span>{{ game.pot }}</span>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.player2">Player 2</span></dt>
+                <dd>
+                    <div *ngIf="game.player2">
+                        <a [routerLink]="['/player', game.player2?.id, 'view']">{{ game.player2?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.game.player1">Player 1</span></dt>
+                <dd>
+                    <div *ngIf="game.player1">
+                        <a [routerLink]="['/player', game.player1?.id, 'view']">{{ game.player1?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/game', game.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

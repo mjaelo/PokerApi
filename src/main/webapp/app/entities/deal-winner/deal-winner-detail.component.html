@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dealWinner">
+            <h2><span jhiTranslate="pokerApp.dealWinner.detail.title">Deal Winner</span> {{ dealWinner.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pokerApp.dealWinner.winner">Winner</span></dt>
+                <dd>
+                    <div *ngIf="dealWinner.winner">
+                        <a [routerLink]="['/player', dealWinner.winner?.id, 'view']">{{ dealWinner.winner?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="pokerApp.dealWinner.game">Game</span></dt>
+                <dd>
+                    <div *ngIf="dealWinner.game">
+                        <a [routerLink]="['/game', dealWinner.game?.id, 'view']">{{ dealWinner.game?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/deal-winner', dealWinner.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+<div class="content" role="main">
+    <h1>Poker API</h1>
+
+    <!--login -->
+    <div [ngSwitch]="isAuthenticated()">
+        <div *ngSwitchCase="true">
+            <!--            <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"-->
+            <!--                  [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}"/</span>-->
+            <jhi-poker-game *ngIf="account" [login]=account.login></jhi-poker-game>
+
+<!--            Opponents-->
+            <!--            <input type="hidden" #tura value="1">-->
+            <!--            <input type="hidden" #user1 value="gracz1">-->
+            <!--            <input type="hidden" #user2 value="gracz2">-->
+            <!--            <input type="hidden" #user3 value="gracz3">-->
+            <!--            <div class="row">-->
+            <!--                <div class="card highlight-card card-small">-->
+            <!--                    <svg id="rocket" alt="Rocket Ship" xmlns="http://www.w3.org/2000/svg" width="101.678"-->
+            <!--                         height="101.678" viewBox="0 0 101.678 101.678">-->
+            <!--                        <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">-->
+            <!--                            <circle id="Ellipse_8" data-name="Ellipse 8" cx="50.839" cy="50.839" r="50.839"-->
+            <!--                                    transform="translate(141 696)" fill="#dd0031"/>-->
+            <!--                            <g id="Group_47" data-name="Group 47" transform="translate(165.185 720.185)">-->
+            <!--                                <path id="Path_33" data-name="Path 33"-->
+            <!--                                      d="M3.4,42.615a3.084,3.084,0,0,0,3.553,3.553,21.419,21.419,0,0,0,12.215-6.107L9.511,30.4A21.419,21.419,0,0,0,3.4,42.615Z"-->
+            <!--                                      transform="translate(0.371 3.363)" fill="#fff"/>-->
+            <!--                                <path id="Path_34" data-name="Path 34"-->
+            <!--                                      d="M53.3,3.221A3.09,3.09,0,0,0,50.081,0,48.227,48.227,0,0,0,18.322,13.437c-6-1.666-14.991-1.221-18.322,7.218A33.892,33.892,0,0,1,9.439,25.1l-.333.666a3.013,3.013,0,0,0,.555,3.553L23.985,43.641a2.9,2.9,0,0,0,3.553.555l.666-.333A33.892,33.892,0,0,1,32.647,53.3c8.55-3.664,8.884-12.326,7.218-18.322A48.227,48.227,0,0,0,53.3,3.221ZM34.424,9.772a6.439,6.439,0,1,1,9.106,9.106,6.368,6.368,0,0,1-9.106,0A6.467,6.467,0,0,1,34.424,9.772Z"-->
+            <!--                                      transform="translate(0 0.005)" fill="#fff"/>-->
+            <!--                            </g>-->
+            <!--                        </g>-->
+            <!--                    </svg>-->
+            <!--                    <h3>{{user1.value}} is playing</h3>-->
+            <!--                </div>-->
+            <!--                <div class="card highlight-card card-small">-->
+            <!--                    <span>{{user2.value}}</span>-->
+            <!--                </div>-->
+            <!--                <div class="card highlight-card card-small">-->
+            <!--                    <span>{{user3.value}}</span>-->
+            <!--                </div>-->
+            <!--            </div>-->
+<!--            <div class="turn" [ngSwitch]="tura.value">-->
+<!--                <div *ngSwitchDefault></div>-->
+<!--                <div class="row" *ngSwitchCase="'2'">-->
+<!--                    <input type="hidden" #temp value=user1.value>-->
+<!--                    {{temp.setAttribute("value", user1.value)}}-->
+<!--                    {{user1.setAttribute("value", user2.value)}}-->
+<!--                    {{user2.setAttribute("value", user3.value)}}-->
+<!--                    {{user3.setAttribute("value", temp.value)}}-->
+<!--                    {{tura.setAttribute("value", "1")}}-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <!-- Table -->
+<!--            <h2>Table</h2>-->
+<!--            <div class="card-container">-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>4 of Hearts</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>10 of Diamonds</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>Queen of Hearts</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>King of Spades</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>King of Clubs</span>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Your cards &ndash;&gt;-->
+<!--            <h2>Your cards</h2>-->
+<!--            <div class="card-container">-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>6 of Hearts</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>Queen of Spades</span>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Choices &ndash;&gt;-->
+<!--            <h2>What do you want to do?</h2>-->
+<!--            <input type="hidden" #selection>-->
+<!--            <div class="card-container">-->
+<!--                <div class="card card-small" (click)="selection.value = 'raise'" tabindex="0">-->
+<!--                    <span>Raise</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'check'" tabindex="0">-->
+<!--                    <span>Check</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value='pass'" (click)="tura.value = '2'" tabindex="0">-->
+<!--                    <span>Pass</span>-->
+<!--                </div>-->
+<!--                <div class="card card-small" (click)="selection.value = 'game info'" tabindex="0">-->
+<!--                    <span>Game Info</span>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Terminal &ndash;&gt;-->
+<!--            <div class="terminal" [ngSwitch]="selection.value">-->
+<!--                <pre *ngSwitchDefault>Choose Wisely</pre>-->
+<!--                <pre *ngSwitchCase="'raise'">raise</pre>-->
+<!--                <pre *ngSwitchCase="'check'">check</pre>-->
+<!--                <div *ngSwitchCase="'pass'">pass-->
+<!--                </div>-->
+<!--                <pre *ngSwitchCase="'game info'">info</pre>-->
+<!--            </div>-->
+        </div>
+
+
+        <div class="alert alert-warning login-box" *ngSwitchCase="false">
+            <button type="submit" (click)="login()" class="btn btn-primary">Sign in</button>
+            <button type="submit" routerLink="account/register" class="btn btn-light">Register</button>
+            <!--            <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>-->
+<!--            <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign-->
+<!--                in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>-->
+        </div>
+
+<!--        <div class="alert alert-warning" *ngSwitchCase="false">-->
+<!--            <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;-->
+<!--            <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register-->
+<!--                a new account</a>-->
+<!--        </div>-->
+
+
+    </div>
+    </div>

@@ -1,0 +1,40 @@
+<div class="opponent-container" *ngIf="opponent !== undefined">
+    <div class="opponent-data">
+        <h2>Your opponent: {{opponent.nickname}}</h2>
+        <p class="cash">cash: {{opponent.cash}}</p>
+        <h4>Opponent's jackpot: {{opponentPot}}</h4>
+    </div>
+
+    <div class="card-container">
+        <div class="card" *ngFor="let card of opponentCards">
+            <jhi-poker-card [cardId]="card.id"></jhi-poker-card>
+        </div>
+    </div>
+</div>
+<div class="table-container" *ngIf="currentGame !== undefined">
+    <h2>Table</h2>
+    <h4>Game jackpot: {{jackpot}}</h4>
+    <!--    <p class="cash">jackpot: {{currentGame.pot!}}</p>-->
+    <!--    <div class="card-container" *ngIf="currentGame">-->
+    <!--        <div class="card">-->
+    <!--            <jhi-poker-card *ngIf="currentGame" [cardId]=currentGame!.card1></jhi-poker-card>-->
+    <!--        </div>-->
+    <!--        <div class="card">-->
+    <!--            <jhi-poker-card *ngIf="currentGame" [cardId]=currentGame!.card2></jhi-poker-card>-->
+    <!--        </div>-->
+    <!--        <div class="card">-->
+    <!--            <jhi-poker-card *ngIf="currentGame" [cardId]=currentGame!.card3></jhi-poker-card>-->
+    <!--        </div>-->
+    <!--        <div class="card">-->
+    <!--            <jhi-poker-card *ngIf="currentGame" [cardId]=currentGame!.card4></jhi-poker-card>-->
+    <!--        </div>-->
+    <!--        <div class="card">-->
+    <!--            <jhi-poker-card *ngIf="currentGame" [cardId]=currentGame!.card5></jhi-poker-card>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="card-container">
+        <div class="card" *ngFor="let card of cards">
+            <jhi-poker-card [cardId]="card"></jhi-poker-card>
+        </div>
+    </div>
+</div>

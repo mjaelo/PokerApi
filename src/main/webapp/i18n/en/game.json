@@ -1,0 +1,33 @@
+{
+  "pokerApp": {
+    "game": {
+      "home": {
+        "title": "Games",
+        "createLabel": "Create a new Game",
+        "createOrEditLabel": "Create or edit a Game",
+        "notFound": "No Games found"
+      },
+      "created": "A new Game is created with identifier {{ param }}",
+      "updated": "A Game is updated with identifier {{ param }}",
+      "deleted": "A Game is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Game {{ id }}?"
+      },
+      "detail": {
+        "title": "Game"
+      },
+      "card1": "Card 1",
+      "card2": "Card 2",
+      "card3": "Card 3",
+      "card4": "Card 4",
+      "card5": "Card 5",
+      "player1Id": "Player 1 Id",
+      "player2Id": "Player 2 Id",
+      "p1Pot": "P 1 Pot",
+      "p2Pot": "P 2 Pot",
+      "pot": "Pot",
+      "player2": "Player 2",
+      "player1": "Player 1"
+    }
+  }
+}

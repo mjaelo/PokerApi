@@ -1,0 +1,26 @@
+<div class="player-container" *ngIf="player">
+    <div class="data"><h2>Your data</h2>
+        <p class="nickname">login: {{player.nickname}}</p>
+        <p class="cash">cash: {{player.cash}}</p>
+    </div>
+
+    <div class="actions">
+        <h3>Your jackpot: {{playerJackpot}}</h3>
+        <input type="text" [(ngModel)]="raiseSum"><button class="action-btn" (click)="raisePot()">Raise</button>
+        <button class="action-btn" (click)="check()">Check</button>
+        <button class="action-btn" (click)="fold()">Pass</button>
+    </div>
+
+    <div class="card-container">
+        <h3>Your cards</h3>
+        <div class="cards">
+            <div class="card">
+                <jhi-poker-card [cardId]=player.card1></jhi-poker-card>
+            </div>
+            <div class="card">
+                <jhi-poker-card [cardId]=player.card2></jhi-poker-card>
+            </div>
+        </div>
+    </div>
+</div>
+<p *ngIf="gameId">gameid</p>
